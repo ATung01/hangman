@@ -1,58 +1,19 @@
 require 'pry'
 
-class User
-  attr_accessor :name, :wins, :losses, :games
-
-  @@all = []
-
-  def initialize (name)
-    @name = name
-    @@all << self
-    @wins = 0
-    @losses = 0
-  end
 
 
-  def self.all
-    @@all
-  end
 
-end
 
-class Games
-  attr_accessor :user
-  @@all = []
-  def initialize(name)
-    @user = User.new(name)
-    @@all << self
-  end
-  def self.all
-    @@all
-  end
-end
 
-def new_game
-  Games.new(get_user)
-end
-
-def get_user
-  name = gets.chomp
-  # User.new(name)
-end
-
-def welcome
-  puts "Welcome, please enter your name"
-  new_game
-  # binding.pry
-end
 
 def random_word
-  # random = RandomWordGenerator.word
-  "hamburger"
+  random = RandomWordGenerator.word
+  # "hamburger"
 end
 
 def word_to_display(random_word)
   random_word.split("")
+end
 
 
 def word_to_array(word)
@@ -80,7 +41,6 @@ end
 def checker(original_word, remaining_letters, user)
   penalty = 0
   miss = []
-  p guess_array(word_to_array('hangman'))
   while penalty < 7
     guess = take_a_guess
     if guess == original_word.join
@@ -97,7 +57,7 @@ def checker(original_word, remaining_letters, user)
         #split into different method
       end
       displayer(remaining_letters)
-      abort ("Yay!") if remaining_letters == original_word && new_game_welcome(user)
+      puts ("Yay!") && user.wins +=1 if remaining_letters == original_word && new_game_welcome(user)
     else
       penalty += 1
       p "WRONG #{wrong_letters(miss, guess)}"
@@ -124,32 +84,7 @@ def displayer(remaining_letters)
   end
 end
 
-def new_game_welcome(old_user)
-  puts "Do you want to play again? Y or N?"
-  answer = gets.chomp
-  if answer.downcase == "y"
-    blah = Games.new(old_user.name)
-    binding.pry
-    blah.user = old_user
 
-    puts "welcome back #{user.name}"
-    random = random_word
-    a = word_to_display(random)
-    b = remaining_letters_missing(random)
-    checker(a, b, old_user)
-    # checker(["a", "n", "d"], [nil,nil,nil], new_user)
-    # play game
-  else
-    puts "New player enter your name OR type EXIT to leave"
-    answer = gets.chomp
-    if answer == "Exit"
-      puts "Goodbye"
-      # break
-    else
-      Games.new(answer)
-    end
-  end
-end
 
 
 

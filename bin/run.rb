@@ -1,5 +1,9 @@
-require_relative "../lib/game_logic.rb"
-
+require_relative '../config/environment'
+require_relative '../app/models/game_continue'
+require_relative '../app/models/game_logic'
+require_relative '../app/models/welcome'
+require_relative '../app/classes/games_class'
+require_relative '../app/classes/user_class'
 
 # Game start
 # welcome message
