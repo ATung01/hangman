@@ -4,7 +4,7 @@ require_relative '../app/models/game_logic'
 require_relative '../app/models/welcome'
 require_relative '../app/classes/games_class'
 require_relative '../app/classes/user_class'
-
+require_relative '../app/models/prepare_game.rb'
 # Game start
 # welcome message
 # user input for new user
@@ -15,7 +15,6 @@ require_relative '../app/classes/user_class'
 
 
 game = welcome
-random = random_word
-a = word_to_display(random)
-b = remaining_letters_missing(random)
+a = random_word_to_array(random_word)
+b = current_board(random_word)
 checker(a,b, game.user)

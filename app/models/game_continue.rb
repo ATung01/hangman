@@ -1,26 +1,26 @@
+require 'pry'
+
 def new_game_welcome(old_user)
-  puts "Do you want to play again? Y or N?"
+  # TODO: Or, press to see all users and their winning ways...
+  puts "Do you want to play again? Y/N?"
   answer = gets.chomp
   if answer.downcase == "y"
-    blah = Games.new(old_user.name)
-    binding.pry
-    blah.user = old_user
-
-    puts "welcome back #{user.name}"
-    random = random_word
-    a = word_to_display(random)
-    b = remaining_letters_missing(random)
-    checker(a, b, old_user)
-    # checker(["a", "n", "d"], [nil,nil,nil], new_user)
-    # play game
+    new_game = Game.new(old_user.name)
+    new_game.user = old_user
+    puts "welcome back #{old_user.name}"
+    a = random_word_to_array(random_word)
+    b = current_board(random_word)
+    checker(a,b, old_user)
   else
     puts "New player enter your name OR type EXIT to leave"
     answer = gets.chomp
-    if answer == "Exit"
+    if answer == "EXIT"
       puts "Goodbye"
-      # break
     else
-      Games.new(answer)
+      new_game = Game.new(answer)
+      a = random_word_to_array(random_word)
+      b = current_board(random_word)
+      checker(a,b, new_game.user)
     end
   end
 end

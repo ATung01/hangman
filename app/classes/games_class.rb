@@ -1,4 +1,4 @@
-class Games
+class Game
   attr_accessor :user
   @@all = []
   def initialize(name)
