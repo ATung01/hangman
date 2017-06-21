@@ -1,8 +1,8 @@
 
 def random_word
-  # random = RandomWordGenerator.word
-  "hamburger"
+  random = RandomWordGenerator.word
 end
+
 
 def random_word_to_array(random_word)
   random_word.split("")

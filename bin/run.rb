@@ -15,6 +15,7 @@ require_relative '../app/models/prepare_game.rb'
 
 
 game = welcome
-a = random_word_to_array(random_word)
-b = current_board(random_word)
+word = random_word
+a = random_word_to_array(word)
+b = current_board(word)
 checker(a,b, game.user)

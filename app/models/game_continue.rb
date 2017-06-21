@@ -10,8 +10,9 @@ def new_game_welcome(old_user)
     new_game.user = old_user
     User.all.pop
     puts "welcome back #{old_user.name}"
-    a = random_word_to_array(random_word)
-    b = current_board(random_word)
+    word = random_word
+    a = random_word_to_array(word)
+    b = current_board(word)
     checker(a,b, old_user)
   elsif answer == 'show'
     # TODO: still a little wonky with the users...
@@ -31,9 +32,10 @@ def new_game_welcome(old_user)
       exit!
     else
       new_game = Game.new(answer)
-      a = random_word_to_array(random_word)
-      b = current_board(random_word)
-      checker(a,b, new_game.user)
+      word = random_word
+      a = random_word_to_array(word)
+      b = current_board(word)
+      checker(a,b, old_user)
     end
   end
 end

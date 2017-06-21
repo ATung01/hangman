@@ -36,6 +36,7 @@ def checker(random_word_to_array, current_board, user)
   end
   user.losses += 1
   puts "You lose. :()"
+  puts "#{random_word_to_array.join}"
   new_game_welcome(user)
 end
 
